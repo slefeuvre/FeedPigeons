@@ -2,18 +2,40 @@ package fr.classes;
 import fr.interfaces.*;
 
 
-public class Food extends Thread implements IObjectsToDraw{
+public class Food implements IObjectsToDraw{
 	
 	private Pos _pos;
+	private boolean _etat; 
+	private String _name;
 
+	public Food(Pos p, String name) {
+
+		System.out.println(this);
+		this._pos = p;
+		this._etat=true;
+		this._name=name;
+	}
+
+	
 	public void set_pos(Pos _pos) {
 		this._pos = _pos;
+	}
+	
+	public void set_etat(boolean b){
+		this._etat = b;
 	}
 
 	@Override
 	public Pos getPos() {
-		// TODO Auto-generated method stub
 		return _pos;
 	}
 
+	@Override
+	public String getName() {
+		return this._name;
+	}
+
+	public Boolean getEtat() {
+		return _etat;
+	}
 }

@@ -1,11 +1,14 @@
 package fr.classes;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainLoop {
 	
 	
 	public static void main(String argv[]) {
-		JFrame frame = new Window();
+		Window w = new Window();	
 	}
-
+	
+			
 }

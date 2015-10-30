@@ -6,4 +6,5 @@ public class PigeonCoop extends Element{
 
 	
 	private List<Pigeon> listPigeons;
+	
 }
