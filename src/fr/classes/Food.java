@@ -10,7 +10,6 @@ public class Food implements IObjectsToDraw{
 
 	public Food(Pos p, String name) {
 
-		System.out.println(this);
 		this._pos = p;
 		this._etat=true;
 		this._name=name;

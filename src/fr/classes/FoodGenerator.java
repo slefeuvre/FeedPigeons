@@ -33,4 +33,14 @@ public class FoodGenerator {
 		
 	}
 
+	public void removeFood() {
+		for(int i=0;i<this._listFood.size();i++)
+		{
+			if(this._listFood.get(i).getEtat()==true)
+			{
+				this._listFood.remove(i);
+			}
+		}
+	}
+	
 }
