@@ -11,7 +11,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	private String _name;
 	private Boolean _onmove=false;
 	private String _toExecute;
-	private Boolean _droite=true;
+	private String _position="arret";
 	
 	public Pigeon() {
 		Random r = new Random();
@@ -74,13 +74,13 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 				if(px < x)
 				{
 					px++;
-					this._droite=true;
+					this._position="droite";
 					this._actualPos.setX(px);
 				}
 				else
 				{
 					px--;
-					this._droite=false;
+					this._position="gauche";
 					this._actualPos.setX(px);
 				}
 			}
@@ -100,7 +100,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 			}
 			//this._onmove=false;
 		}
-		Window._panel.repaint();
+		//Window._panel.repaint();
 		
 	}
 	@Override
@@ -167,8 +167,13 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		return this._onmove;
 	}
 	
-	public Boolean get_droite()
+	public String get_position()
 	{
-		return this._droite;
+		return this._position;
+	}
+	
+	public void set_position(String s)
+	{
+		this._position=s;
 	}
 }

@@ -43,15 +43,15 @@ public class Window extends JFrame implements MouseListener , IElements{
 	
 
 	public static void Trame() {
-		/*while(true){
+		while(true){
 			try {
-				Thread.sleep(5);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			_panel.repaint();
-		}*/
+		}
 	}
 	
 	public void addFood(Pos p){
@@ -74,6 +74,7 @@ public class Window extends JFrame implements MouseListener , IElements{
 		ArrayList<Pigeon> f = Window._pCoop.getPigeons();
 		for(int i=0; i<f.size();i++)
 		{
+			f.get(i).set_position("arret");
 			f.get(i).set_onmove(false);
 		}
 		//this._fGenerator.removefood();
@@ -84,7 +85,6 @@ public class Window extends JFrame implements MouseListener , IElements{
 		
 		if(!this._init)
 		{
-			
 			//System.out.println("Position de x (if): "+e.getX());
 			//MouseInfo.getPointerInfo().getLocation();
 			//System.out.println("Position de Y (if): "+e.getY());

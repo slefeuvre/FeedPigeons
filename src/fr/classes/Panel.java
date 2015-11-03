@@ -24,6 +24,7 @@ public class Panel extends JPanel {
 		URL resource2 = getClass().getResource("/images/food2.jpg");
 		URL resource3 = getClass().getResource("/images/pigeon3.gif");
 		URL resource4 = getClass().getResource("/images/pigeon4.gif");
+		URL resource5 = getClass().getResource("/images/pigeon.png");
 		imagePigeonDroite = new ImageIcon(resource3).getImage();
 		imagePigeonGauche = new ImageIcon(resource4).getImage();
 
@@ -31,7 +32,7 @@ public class Panel extends JPanel {
         try {
             imagefood = ImageIO.read(resource);
             imagefood2 = ImageIO.read(resource2);
-            imagePigeon1 = ImageIO.read(resource3);
+            imagePigeon1 = ImageIO.read(resource5);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,14 +64,22 @@ public class Panel extends JPanel {
 			
 			for(int i=0; i<p.size();i++)
 			{
-				if(p.get(i).get_droite())
+				if(p.get(i).get_position().equals("arret"))
 				{
-					g.drawImage(imagePigeonDroite,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
+					g.drawImage(imagePigeon1,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 30, 30, this);
 				}
 				else
 				{
-					g.drawImage(imagePigeonGauche,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
+					if(p.get(i).get_position().equals("droite"))
+					{
+						g.drawImage(imagePigeonDroite,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
+					}
+					else
+					{
+						g.drawImage(imagePigeonGauche,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
+					}
 				}
+				
 					
 					//g.drawImage(mt,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
 					//g.drawImage(image, 0, 0, 300, 300, this);
