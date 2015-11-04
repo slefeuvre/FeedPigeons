@@ -20,7 +20,7 @@ public class Panel extends JPanel {
 	private Image imagePigeonDroite,imagePigeonGauche;
 	
 	public Panel() {
-		URL resource = getClass().getResource("/images/food.jpg");
+		URL resource = getClass().getResource("/images/food.png");
 		URL resource2 = getClass().getResource("/images/food2.jpg");
 		URL resource3 = getClass().getResource("/images/pigeon3.gif");
 		URL resource4 = getClass().getResource("/images/pigeon4.gif");
