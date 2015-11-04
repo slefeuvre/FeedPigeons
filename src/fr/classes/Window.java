@@ -19,10 +19,8 @@ public class Window extends JFrame implements MouseListener , IElements{
 	static  FoodGenerator _fGenerator;	
 	static PigeonCoop _pCoop;
 	static Panel _panel = new Panel();
-	static Boolean _init=false;
-	
+	static Boolean _init=false;	
 	static int x=0;
-	//static mouseListener _mListener = new mouseListener();
 	
 	public Window(){
 		this.setVisible(true);
@@ -30,9 +28,7 @@ public class Window extends JFrame implements MouseListener , IElements{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setContentPane(_panel);
-	//	this.addMouseListener(this._mListener);
 		this.addMouseListener(this);
-		
 		
 	    _d=new DrawState();
 	    this._fGenerator = new FoodGenerator();
@@ -58,7 +54,6 @@ public class Window extends JFrame implements MouseListener , IElements{
 		
 		this._fGenerator.addFood(p);
 		System.out.println("Food add");
-		
 		ArrayList<Pigeon> f = Window._pCoop.getPigeons();
 		for(int i=0; i<f.size();i++)
 		{
@@ -77,7 +72,6 @@ public class Window extends JFrame implements MouseListener , IElements{
 			f.get(i).set_position("arret");
 			f.get(i).set_onmove(false);
 		}
-		//this._fGenerator.removefood();
 	}
 
 	@Override
@@ -85,17 +79,11 @@ public class Window extends JFrame implements MouseListener , IElements{
 		
 		if(!this._init)
 		{
-			//System.out.println("Position de x (if): "+e.getX());
-			//MouseInfo.getPointerInfo().getLocation();
-			//System.out.println("Position de Y (if): "+e.getY());
 			this.addFood(new Pos(e.getX()-10,e.getY()-30));
 			this._init=true;
 		}
 		else
 		{
-			//System.out.println("Position de x: "+e.getX());
-			//MouseInfo.getPointerInfo().getLocation();
-			//System.out.println("Position de Y: "+e.getY());
 			this.addFood(new Pos(e.getX()-10,e.getY()-30));
 		}
 	}

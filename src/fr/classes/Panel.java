@@ -28,7 +28,6 @@ public class Panel extends JPanel {
 		imagePigeonDroite = new ImageIcon(resource3).getImage();
 		imagePigeonGauche = new ImageIcon(resource4).getImage();
 
-			
         try {
             imagefood = ImageIO.read(resource);
             imagefood2 = ImageIO.read(resource2);
@@ -37,9 +36,6 @@ public class Panel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-
-		
 	}
 	
 	public void paintComponent(Graphics g) {	
@@ -79,17 +75,7 @@ public class Panel extends JPanel {
 						g.drawImage(imagePigeonGauche,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
 					}
 				}
-				
-					
-					//g.drawImage(mt,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
-					//g.drawImage(image, 0, 0, 300, 300, this);
-					
 			}
-			
-			
-			
 		}
-		
 	}
-	
 }

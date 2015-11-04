@@ -62,8 +62,6 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 			System.out.println("false");
 			Window.stopPigeon();
 			Window._fGenerator.removeFood();
-			//this._onmove=false;
-			//Window._panel.repaint();
 		}
 		else
 		{
@@ -98,53 +96,21 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 					this._actualPos.setY(py);
 				}
 			}
-			//this._onmove=false;
 		}
-		//Window._panel.repaint();
-		
 	}
 	@Override
 	public void run() {
-		
-		/*int i = f.size();
-		i--;
-		this.set_Tpos(f.get(i).getPos());*/
-		int i=0;
+
 		while(true)
 		{
-			//System.out.println("while");
-			i=1;
-			//this._onmove=true;
-			/*ArrayList<Food> f = Window._fGenerator.getFood();
-			for(int j=0;j<f.size();j++)
-			{
-				System.out.println("etat de food" +f.get(j).getEtat());
-				if(f.get(j).getEtat())
-				{
-					this._onmove=true;
-					this.set_Tpos(f.get(j).getPos());
-				}
-			}*/
-			
 			if(this._onmove == true)
 			{
 				System.out.println(this._onmove);
-					//this._onmove=this.move();
 				this.move();
-				//Window._panel.repaint();
 			}
 			else
 			{
-				/*ArrayList<Food> f = Window._fGenerator.getFood();
-				for(int j=0;j<f.size();j++)
-				{
-					System.out.println("etat de food" +f.get(j).getEtat());
-					if(f.get(j).getEtat())
-					{
-						this._onmove=true;
-						this.set_Tpos(f.get(j).getPos());
-					}
-				}*/
+				
 			}
 			try {
 				Thread.sleep(20);
