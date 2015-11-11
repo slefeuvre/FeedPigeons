@@ -23,7 +23,12 @@ public class FoodGenerator {
 
 		for(int i=0;i<this._listFood.size();i++)
 		{
-			this._listFood.get(i).set_etat(false);
+			if(this._listFood.get(i).getEaten()) {
+				this._listFood.remove(i);
+			}
+			else {
+				this._listFood.get(i).set_etat(false);
+			}	
 		}
 		Food f = new Food(p);
 		this._listFood.add(f);

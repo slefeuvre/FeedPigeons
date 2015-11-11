@@ -64,6 +64,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		else {
 			if(_targetPos.getX()==_actualPos.getX() && _targetPos.getY()==_actualPos.getY())
 			{
+				System.out.println("Trying to eat");
 				_toEat.eat();
 			}
 			else
@@ -148,5 +149,11 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	@Override
 	public Boolean getEtat() {
 		return true;
+	}
+
+	@Override
+	public Boolean getEaten() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

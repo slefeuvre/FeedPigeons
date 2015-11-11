@@ -33,4 +33,10 @@ public class Human extends Thread implements IObjectsToDraw{
 		return null;
 	}
 
+	@Override
+	public Boolean getEaten() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

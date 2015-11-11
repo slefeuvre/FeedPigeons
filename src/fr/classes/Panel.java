@@ -46,12 +46,14 @@ public class Panel extends JPanel {
 		{
 			for(int i = 0; i < Window._d.getSize(); i++) {
 				if(Window._d.getAtPos(i).getClassName() == "food") {
-					if(Window._d.getAtPos(i).getEtat()) {
-						g.drawImage(imagefood,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
-					}
-					else
-					{
-						g.drawImage(imagefood2,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+					if(!Window._d.getAtPos(i).getEaten()) {
+						if(Window._d.getAtPos(i).getEtat()) {
+							g.drawImage(imagefood,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+						}
+						else
+						{
+							g.drawImage(imagefood2,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+						}
 					}
 				}
 				else if(Window._d.getAtPos(i).getClassName() == "pigeon"){

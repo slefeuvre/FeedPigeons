@@ -43,6 +43,7 @@ public class Food implements IObjectsToDraw, IFood{
 
 	@Override
 	public synchronized void eat() {
+		System.out.println("Eating");
 		_eaten = true;
 	}
 
