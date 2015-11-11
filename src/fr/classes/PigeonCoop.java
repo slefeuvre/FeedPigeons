@@ -43,7 +43,15 @@ public class PigeonCoop implements IPigeonCoop{
 	@Override
 	public void notify_pigeons_move() {
 		for(int i = 0; i < _listPigeons.size(); i++) {
-			_listPigeons.get(i).setToExecute("move");
+			if(_listPigeons.get(i).get_targetPos()!=null)
+			{
+				_listPigeons.get(i).setToExecute("move");
+			}
+			else
+			{
+				_listPigeons.get(i).setToExecute("arret");
+			}
+			
 		}
 	}
 }

@@ -30,6 +30,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 
 	public synchronized void set_target(IFood food) {
 		_toEat = food;
+		System.out.println(_toEat);
 		_targetPos = _toEat.getPos();
 	}
 	
@@ -41,6 +42,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	public void move()
 	{
 		System.out.println("move");
+		System.out.println(_toEat.getEaten());
 		if(_toEat.getEaten()){
 			_toEat = null;
 			_targetPos = null;
@@ -200,5 +202,11 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	public synchronized Boolean getEaten() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public synchronized Pos get_targetPos() {
+		
+		return this._targetPos;
+		
 	}
 }
