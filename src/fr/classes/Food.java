@@ -22,7 +22,7 @@ public class Food implements IObjectsToDraw, IFood{
 		this._pos = _pos;
 	}
 	
-	public void set_etat(boolean b){
+	public synchronized void set_etat(boolean b){
 		this._etat = b;
 	}
 
@@ -36,7 +36,7 @@ public class Food implements IObjectsToDraw, IFood{
 		return this._name;
 	}
 
-	public Boolean getEtat() {
+	public synchronized Boolean getEtat() {
 		return _etat;
 	}
 
@@ -49,13 +49,13 @@ public class Food implements IObjectsToDraw, IFood{
 
 
 	@Override
-	public Boolean getEaten() {
+	public synchronized Boolean getEaten() {
 		return _eaten;
 	}
 
 
 	@Override
-	public String getPosition() {
+	public synchronized String getPosition() {
 		return "none";
 	}
 }

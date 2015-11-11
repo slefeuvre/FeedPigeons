@@ -1,14 +1,10 @@
 package fr.classes;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -16,7 +12,11 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel {
 	
-	private BufferedImage imagefood,imagefood2,imagePigeon1;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1069262196257160478L;
+	private BufferedImage imagefood,imagefood2,imagePigeon1,imageHuman;
 	private Image imagePigeonDroite,imagePigeonGauche;
 	
 	public Panel() {
@@ -25,6 +25,7 @@ public class Panel extends JPanel {
 		URL resource3 = getClass().getResource("/images/pigeon3.gif");
 		URL resource4 = getClass().getResource("/images/pigeon4.gif");
 		URL resource5 = getClass().getResource("/images/pigeon.png");
+		URL resource6 = getClass().getResource("/images/human.png");
 		imagePigeonDroite = new ImageIcon(resource3).getImage();
 		imagePigeonGauche = new ImageIcon(resource4).getImage();
 
@@ -32,7 +33,7 @@ public class Panel extends JPanel {
             imagefood = ImageIO.read(resource);
             imagefood2 = ImageIO.read(resource2);
             imagePigeon1 = ImageIO.read(resource5);
-
+            imageHuman = ImageIO.read(resource6);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,6 +72,11 @@ public class Panel extends JPanel {
 						{
 							g.drawImage(imagePigeonGauche,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
 						}
+					}
+				}
+				else if(Window._d.getAtPos(i).getClassName() == "human") {
+					if(Window._d.getAtPos(i).getEtat()){
+						g.drawImage(imageHuman, Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 60, 60, this);
 					}
 				}
 			}

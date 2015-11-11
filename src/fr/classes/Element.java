@@ -12,8 +12,8 @@ public class Element implements IElements{
 	
 	public Element() {
 		_foodG = new FoodGenerator();
-		_humans = new Humans();
 		_pigeonCoop = new PigeonCoop();
+		_humans = new Humans(_pigeonCoop);
 	}
 	
 	@Override

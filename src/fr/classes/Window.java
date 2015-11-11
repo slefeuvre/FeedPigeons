@@ -1,19 +1,15 @@
 package fr.classes;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import fr.interfaces.IElements;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.MouseInfo;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Window extends JFrame implements MouseListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5634244598882775716L;
 	static DrawState _d;
 	private Panel _panel = new Panel();
 	static Boolean _init=false;	
@@ -58,10 +54,10 @@ public class Window extends JFrame implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		if(!this._init)
+		if(!_init)
 		{
 			this.addFood(new Pos(e.getX()-10,e.getY()-30));
-			this._init=true;
+			_init=true;
 		}
 		else
 		{

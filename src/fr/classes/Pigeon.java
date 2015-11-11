@@ -1,5 +1,4 @@
 package fr.classes;
-import java.util.ArrayList;
 import java.util.Random;
 
 import fr.interfaces.*;
@@ -9,8 +8,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	private Pos _actualPos;
 	private Pos _targetPos;
 	private String _name;
-	private Boolean _onmove=false;
-	private String _toExecute;
+	private String _toExecute = "arret";
 	private String _position="arret";
 	private IFood _toEat;
 	
@@ -25,32 +23,19 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		
 		this.set_pos(p);
 	}
-
-	public void set_onmove(Boolean b) {
-		this._onmove = b;
-		System.out.println("set_onmove");
-	}
 	
-	public void set_pos(Pos _pos) {
+	public synchronized void set_pos(Pos _pos) {
 		this._actualPos = _pos;
 	}
 
-	public void set_target(IFood food) {
+	public synchronized void set_target(IFood food) {
 		_toEat = food;
 		_targetPos = _toEat.getPos();
 	}
 	
 	@Override
-	public Pos getPos() {
+	public synchronized Pos getPos() {
 		return _actualPos;
-	}
-
-	public String get_toExecute() {
-		return _toExecute;
-	}
-
-	public void set_toExecute(String _toExecute) {
-		this._toExecute = _toExecute;
 	}
 
 	public void move()
@@ -59,7 +44,8 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		if(_toEat.getEaten()){
 			_toEat = null;
 			_targetPos = null;
-			_onmove = false;
+			_position = "arret";
+			_toExecute = "arret";
 		}
 		else {
 			if(_targetPos.getX()==_actualPos.getX() && _targetPos.getY()==_actualPos.getY())
@@ -99,19 +85,75 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 			}
 		}
 	}
+	
+	public void move_randomly() {
+		Random r = new Random();
+		int valeur = r.nextInt(8);
+		
+		switch(valeur){
+			case 0:
+				if(_actualPos.getX()+4 < 800) {
+					_actualPos.setX(_actualPos.getX()+4);
+				}
+				break;
+			case 1:
+				if(_actualPos.getX()+4 < 800 && _actualPos.getY()+4 < 500) {
+					_actualPos.setX(_actualPos.getX()+4);
+					_actualPos.setY(_actualPos.getY()+4);
+				}
+				break;
+			case 2:
+				if(_actualPos.getY()+4 < 500) {
+					_actualPos.setY(_actualPos.getY()+4);
+				}
+				break;
+			case 3:
+				if(_actualPos.getX()-4 > 0 && _actualPos.getY()+4 < 500) {
+					_actualPos.setX(_actualPos.getX()-4);
+					_actualPos.setY(_actualPos.getY()+4);
+				}
+				break;
+			case 4:
+				if(_actualPos.getX()-4 > 0) {
+					_actualPos.setX(_actualPos.getX()-4);
+				}
+				break;
+			case 5:
+				if(_actualPos.getX()-4 > 0 && _actualPos.getY()-4 > 0) {
+					_actualPos.setX(_actualPos.getX()-4);
+					_actualPos.setY(_actualPos.getY()-4);
+				}
+				break;
+			case 6:
+				if(_actualPos.getY()-4 > 0) {
+					_actualPos.setY(_actualPos.getY()-4);
+				}
+				break;
+			case 7:
+				if(_actualPos.getX()+4 < 800 && _actualPos.getY()-4 > 0) {
+					_actualPos.setX(_actualPos.getX()+4);
+					_actualPos.setY(_actualPos.getY()-4);
+				}
+				break;
+			default:
+				System.out.println("NOT SUPPOSED TO HAPPEN AHDHGSGSDFHDFGHDFH");
+		}
+	}
+	
 	@Override
 	public void run() {
 
 		while(true)
 		{
-			if(this._onmove == true)
+			if(this._toExecute.equals("move"))
 			{
-				System.out.println(this._onmove);
+				System.out.println(this._toExecute);
 				this.move();
 			}
-			else
+			else if(this._toExecute.equals("random"))
 			{
-				
+				System.out.println(this._toExecute);
+				this.move_randomly();
 			}
 			try {
 				Thread.sleep(20);
@@ -130,29 +172,32 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		return this._targetPos;
 	}
 	
-	public Boolean get_onmove()
-	{
-		return this._onmove;
-	}
-	
 	@Override
 	public String getPosition()
 	{
 		return this._position;
 	}
 	
-	public void set_position(String s)
+	public synchronized void set_position(String s)
 	{
 		this._position=s;
 	}
+	
+	public synchronized void setToExecute(String s) {
+		this._toExecute = s;
+	}
+	
+	public synchronized String getToExecute() {
+		return this._toExecute;
+	}
 
 	@Override
-	public Boolean getEtat() {
+	public synchronized Boolean getEtat() {
 		return true;
 	}
 
 	@Override
-	public Boolean getEaten() {
+	public synchronized Boolean getEaten() {
 		// TODO Auto-generated method stub
 		return null;
 	}
