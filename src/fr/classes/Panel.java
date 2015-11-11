@@ -44,39 +44,6 @@ public class Panel extends JPanel {
 		super.paintComponent(g);
 		if(Window._init)
 		{
-			/*ArrayList<Food> f = Window._fGenerator.getFood();
-			ArrayList<Pigeon> p = Window._pCoop.getPigeons();
-			
-			for(int i=0; i<f.size();i++)
-			{
-				if(f.get(i).getEtat()) {
-					g.drawImage(imagefood,f.get(i).getPos().getX(), f.get(i).getPos().getY(), 40, 40, this);
-				}
-				else
-				{
-					g.drawImage(imagefood2,f.get(i).getPos().getX(), f.get(i).getPos().getY(), 40, 40, this);
-				}
-			}
-			
-			for(int i=0; i<p.size();i++)
-			{
-				if(p.get(i).get_position().equals("arret"))
-				{
-					g.drawImage(imagePigeon1,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 30, 30, this);
-				}
-				else
-				{
-					if(p.get(i).get_position().equals("droite"))
-					{
-						g.drawImage(imagePigeonDroite,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
-					}
-					else
-					{
-						g.drawImage(imagePigeonGauche,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
-					}
-				}
-			}*/
-			
 			for(int i = 0; i < Window._d.getSize(); i++) {
 				if(Window._d.getAtPos(i).getClassName() == "food") {
 					if(Window._d.getAtPos(i).getEtat()) {

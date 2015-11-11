@@ -7,7 +7,7 @@ public class Humans{
 	private ArrayList<Human> _listHumans;
 	
 	public Humans() {
-		
+		_listHumans = new ArrayList<Human>();
 	}
 	
 	public ArrayList<Human> getHumans() {

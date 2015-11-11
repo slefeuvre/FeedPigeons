@@ -1,11 +1,10 @@
 package fr.classes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fr.interfaces.IFood;
 
-public class PigeonCoop extends Element{
+public class PigeonCoop {
 
 	
 	private ArrayList<Pigeon> _listPigeons;
