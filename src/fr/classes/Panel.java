@@ -43,43 +43,40 @@ public class Panel extends JPanel {
 		//dans cette m�thode on r�cup�re tous ce qu'il y a a afficher
 
 		super.paintComponent(g);
-		//if(Window._init)
-		//{
-			for(int i = 0; i < Window._d.getSize(); i++) {
-				if(Window._d.getAtPos(i).getClassName() == "food") {
-					if(!Window._d.getAtPos(i).getEaten()) {
-						if(Window._d.getAtPos(i).getEtat()) {
-							g.drawImage(imagefood,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
-						}
-						else
-						{
-							g.drawImage(imagefood2,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
-						}
-					}
-				}
-				else if(Window._d.getAtPos(i).getClassName() == "pigeon"){
-					if(Window._d.getAtPos(i).getPosition().equals("arret"))
-					{
-						g.drawImage(imagePigeon1,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 30, 30, this);
+		for(int i = 0; i < Window._d.getSize(); i++) {
+			if(Window._d.getAtPos(i).getClassName() == "food") {
+				if(!Window._d.getAtPos(i).getEaten()) {
+					if(Window._d.getAtPos(i).getEtat()) {
+						g.drawImage(imagefood,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
 					}
 					else
 					{
-						if(Window._d.getAtPos(i).getPosition().equals("droite"))
-						{
-							g.drawImage(imagePigeonDroite,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
-						}
-						else
-						{
-							g.drawImage(imagePigeonGauche,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
-						}
-					}
-				}
-				else if(Window._d.getAtPos(i).getClassName() == "human") {
-					if(Window._d.getAtPos(i).getEtat()){
-						g.drawImage(imageHuman, Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 60, 60, this);
+						g.drawImage(imagefood2,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
 					}
 				}
 			}
-		//}
+			else if(Window._d.getAtPos(i).getClassName() == "pigeon"){
+				if(Window._d.getAtPos(i).getToExecute().equals("arret"))
+				{
+					g.drawImage(imagePigeon1,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 30, 30, this);
+				}
+				else
+				{
+					if(Window._d.getAtPos(i).getPosition().equals("droite"))
+					{
+						g.drawImage(imagePigeonDroite,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+					}
+					else
+					{
+						g.drawImage(imagePigeonGauche,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+					}
+				}
+			}
+			else if(Window._d.getAtPos(i).getClassName() == "human") {
+				if(Window._d.getAtPos(i).getEtat()){
+					g.drawImage(imageHuman, Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 60, 60, this);
+				}
+			}
+		}
 	}
 }

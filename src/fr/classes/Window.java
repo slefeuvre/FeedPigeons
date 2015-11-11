@@ -12,7 +12,6 @@ public class Window extends JFrame implements MouseListener{
 	private static final long serialVersionUID = 5634244598882775716L;
 	static DrawState _d;
 	private Panel _panel = new Panel();
-	static Boolean _init=false;	
 	static int x=0;
 	private IElements _ie;
 	
@@ -53,16 +52,7 @@ public class Window extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
-		if(!_init)
-		{
-			this.addFood(new Pos(e.getX()-10,e.getY()-30));
-			_init=true;
-		}
-		else
-		{
-			this.addFood(new Pos(e.getX()-10,e.getY()-30));
-		}
+		this.addFood(new Pos(e.getX()-10,e.getY()-30));
 	}
 
 	@Override

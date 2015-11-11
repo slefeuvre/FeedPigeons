@@ -58,4 +58,11 @@ public class Food implements IObjectsToDraw, IFood{
 	public synchronized String getPosition() {
 		return "none";
 	}
+
+
+	@Override
+	public String getToExecute() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

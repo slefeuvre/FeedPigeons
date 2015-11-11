@@ -71,18 +71,18 @@ public class Human extends Thread implements IObjectsToDraw{
 				_ipc.notify_pigeons_human();
 				if(_pos.getX() != _end.getX()){
 					if(_pos.getX() < _end.getX()) {
-						_pos.setX(_pos.getX()+5);
+						_pos.setX(_pos.getX()+4);
 					}
 					else{
-						_pos.setX(_pos.getX()-5);
+						_pos.setX(_pos.getX()-4);
 					}
 				}
 				if(_pos.getY() != _end.getY()) {
 					if(_pos.getY() < _end.getY()) {
-						_pos.setY(_pos.getY()+5);
+						_pos.setY(_pos.getY()+4);
 					}
 					else{
-						_pos.setY(_pos.getY()-5);
+						_pos.setY(_pos.getY()-4);
 					}
 				}
 			}
@@ -123,6 +123,12 @@ public class Human extends Thread implements IObjectsToDraw{
 
 	@Override
 	public Boolean getEaten() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getToExecute() {
 		// TODO Auto-generated method stub
 		return null;
 	}

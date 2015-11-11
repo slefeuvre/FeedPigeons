@@ -13,4 +13,6 @@ public interface IObjectsToDraw {
 	public String getPosition();
 	
 	public Boolean getEaten();
+	
+	public String getToExecute();
 }

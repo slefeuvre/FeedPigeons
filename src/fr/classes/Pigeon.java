@@ -9,7 +9,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	private Pos _targetPos;
 	private String _name;
 	private String _toExecute = "arret";
-	private String _position="arret";
+	private String _position="droite";
 	private IFood _toEat;
 	
 	public Pigeon() {
@@ -30,7 +30,6 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 
 	public synchronized void set_target(IFood food) {
 		_toEat = food;
-		System.out.println(_toEat);
 		_targetPos = _toEat.getPos();
 	}
 	
@@ -44,7 +43,6 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		if(_toEat.getEaten()){
 			_toEat = null;
 			_targetPos = null;
-			_position = "arret";
 			_toExecute = "arret";
 		}
 		else {
@@ -93,11 +91,13 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		switch(valeur){
 			case 0:
 				if(_actualPos.getX()+4 < 800) {
+					_position = "droite";
 					_actualPos.setX(_actualPos.getX()+4);
 				}
 				break;
 			case 1:
 				if(_actualPos.getX()+4 < 800 && _actualPos.getY()+4 < 500) {
+					_position = "droite";
 					_actualPos.setX(_actualPos.getX()+4);
 					_actualPos.setY(_actualPos.getY()+4);
 				}
@@ -109,17 +109,20 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 				break;
 			case 3:
 				if(_actualPos.getX()-4 > 0 && _actualPos.getY()+4 < 500) {
+					_position = "gauche";
 					_actualPos.setX(_actualPos.getX()-4);
 					_actualPos.setY(_actualPos.getY()+4);
 				}
 				break;
 			case 4:
 				if(_actualPos.getX()-4 > 0) {
+					_position = "gauche";
 					_actualPos.setX(_actualPos.getX()-4);
 				}
 				break;
 			case 5:
 				if(_actualPos.getX()-4 > 0 && _actualPos.getY()-4 > 0) {
+					_position = "gauche";
 					_actualPos.setX(_actualPos.getX()-4);
 					_actualPos.setY(_actualPos.getY()-4);
 				}
@@ -131,6 +134,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 				break;
 			case 7:
 				if(_actualPos.getX()+4 < 800 && _actualPos.getY()-4 > 0) {
+					_position = "droite";
 					_actualPos.setX(_actualPos.getX()+4);
 					_actualPos.setY(_actualPos.getY()-4);
 				}
@@ -198,11 +202,5 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	public synchronized Boolean getEaten() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	public synchronized Pos get_targetPos() {
-		
-		return this._targetPos;
-		
 	}
 }
