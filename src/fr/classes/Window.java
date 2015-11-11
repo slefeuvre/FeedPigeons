@@ -52,7 +52,9 @@ public class Window extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.addFood(new Pos(e.getX()-10,e.getY()-30));
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			this.addFood(new Pos(e.getX()-10,e.getY()-30));
+		}
 	}
 
 	@Override
