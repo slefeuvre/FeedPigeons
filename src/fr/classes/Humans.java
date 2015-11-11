@@ -1,6 +1,7 @@
 package fr.classes;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import fr.interfaces.IPigeonCoop;
 
@@ -23,13 +24,21 @@ public class Humans extends Thread{
 	public void run() {
 		while(true)
 		{
+			int valeur = 99;
 			try {
-				Thread.sleep(15000);
+				Thread.sleep(2000);
+				Random r = new Random();
+				valeur = r.nextInt(100);
+				if(valeur < 20) {
+					spawnHuman();
+					if(!_listHumans.get(0).getEtat()) {
+						_listHumans.remove(0);
+					}
+				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			spawnHuman();
 		}
 	}
 	
