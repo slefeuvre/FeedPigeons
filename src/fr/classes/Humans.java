@@ -1,9 +1,16 @@
 package fr.classes;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Humans extends Element{
+public class Humans{
 
-	private List<Human> listHuman;
+	private ArrayList<Human> _listHumans;
 	
+	public Humans() {
+		
+	}
+	
+	public ArrayList<Human> getHumans() {
+		return _listHumans;
+	}
 }

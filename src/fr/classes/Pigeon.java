@@ -12,12 +12,16 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	private Boolean _onmove=false;
 	private String _toExecute;
 	private String _position="arret";
+	private IFood _toEat;
 	
 	public Pigeon() {
 		Random r = new Random();
 		int valeur = r.nextInt(800);
 		int valeur2 = r.nextInt(500);
 		Pos p = new Pos(valeur,valeur2);
+		_toEat = null;
+		_targetPos = null;
+		_name = "pigeon";
 		
 		this.set_pos(p);
 	}
@@ -31,8 +35,9 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		this._actualPos = _pos;
 	}
 
-	public void set_Tpos(Pos _pos) {
-		this._targetPos = _pos;
+	public void set_target(IFood food) {
+		_toEat = food;
+		_targetPos = _toEat.getPos();
 	}
 	
 	@Override
@@ -51,49 +56,44 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	public void move()
 	{
 		System.out.println("move");
-		int px = this._actualPos.getX();
-		int py = this._actualPos.getY();
-		int x = this._targetPos.getX();
-		int y = this._targetPos.getY();
-		System.out.println("Position du pigeon :"+px+"  "+py);
-		System.out.println("Position de target :"+x+"  "+y);
-		if(px==x && py==y)
-		{
-			System.out.println("false");
-			Window.stopPigeon();
-			Window._fGenerator.removeFood();
+		if(_toEat.getEaten()){
+			_toEat = null;
+			_targetPos = null;
+			_onmove = false;
 		}
-		else
-		{
-			//On change la position du pigeon
-			// on vérifie sur l'axe x
-			if(px != x)
+		else {
+			if(_targetPos.getX()==_actualPos.getX() && _targetPos.getY()==_actualPos.getY())
 			{
-				if(px < x)
-				{
-					px++;
-					this._position="droite";
-					this._actualPos.setX(px);
-				}
-				else
-				{
-					px--;
-					this._position="gauche";
-					this._actualPos.setX(px);
-				}
+				_toEat.eat();
 			}
-			// on vérifie sur l'axe y
-			if(py != y)
+			else
 			{
-				if(py<y)
+				//On change la position du pigeon
+				// on vérifie sur l'axe x
+				if(_actualPos.getX() != _targetPos.getX())
 				{
-					py++;
-					this._actualPos.setY(py);
+					if(_actualPos.getX() < _targetPos.getX())
+					{
+						this._position="droite";
+						this._actualPos.setX(_actualPos.getX()+1);
+					}
+					else
+					{
+						this._position="gauche";
+						this._actualPos.setX(_actualPos.getX()-1);
+					}
 				}
-				else
+				// on vérifie sur l'axe y
+				if(_actualPos.getY() != _targetPos.getY())
 				{
-					py--;
-					this._actualPos.setY(py);
+					if(_actualPos.getY() < _targetPos.getY())
+					{
+						this._actualPos.setY(_actualPos.getY()+1);
+					}
+					else
+					{
+						this._actualPos.setY(_actualPos.getY()-1);
+					}
 				}
 			}
 		}
@@ -115,12 +115,13 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
-			e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 	}
 	
-	public String get_Name() {
+	@Override
+	public String getClassName() {
 		return this._name;
 	}
 	
@@ -133,7 +134,8 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		return this._onmove;
 	}
 	
-	public String get_position()
+	@Override
+	public String getPosition()
 	{
 		return this._position;
 	}
@@ -141,5 +143,10 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 	public void set_position(String s)
 	{
 		this._position=s;
+	}
+
+	@Override
+	public Boolean getEtat() {
+		return true;
 	}
 }

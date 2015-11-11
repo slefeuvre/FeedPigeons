@@ -14,7 +14,7 @@ public class FoodGenerator {
 	}
 	
 
-	public void addFood(Pos p) {
+	public Food addFood(Pos p) {
 		// TODO Auto-generated method stub
 		if(this._listFood.size()>4)
 		{
@@ -25,7 +25,9 @@ public class FoodGenerator {
 		{
 			this._listFood.get(i).set_etat(false);
 		}
-		this._listFood.add(new Food(p,"food"));
+		Food f = new Food(p);
+		this._listFood.add(f);
+		return f;
 	}
 	
 	public ArrayList<Food> getFood(){

@@ -12,17 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Window extends JFrame implements MouseListener , IElements{
+public class Window extends JFrame implements MouseListener{
 	
-	private DrawState _d;
-	
-	static  FoodGenerator _fGenerator;	
-	static PigeonCoop _pCoop;
-	static Panel _panel = new Panel();
+	static DrawState _d;
+	private Panel _panel = new Panel();
 	static Boolean _init=false;	
 	static int x=0;
+	private IElements _ie;
 	
-	public Window(){
+	public Window(IElements ie){
 		this.setVisible(true);
 		this.setSize(800,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,14 +29,14 @@ public class Window extends JFrame implements MouseListener , IElements{
 		this.addMouseListener(this);
 		
 	    _d=new DrawState();
-	    this._fGenerator = new FoodGenerator();
-	    this._pCoop = new PigeonCoop();
+	    
+	    _ie = ie;
 	    
 	    Trame();	
 	}
 	
 
-	public static void Trame() {
+	public void Trame() {
 		while(true){
 			try {
 				Thread.sleep(100);
@@ -46,32 +44,15 @@ public class Window extends JFrame implements MouseListener , IElements{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			_d = _ie.getDrawState();
 			_panel.repaint();
 		}
 	}
 	
 	public void addFood(Pos p){
-		
-		this._fGenerator.addFood(p);
+		_ie.addFood(p);
 		System.out.println("Food add");
-		ArrayList<Pigeon> f = Window._pCoop.getPigeons();
-		for(int i=0; i<f.size();i++)
-		{
-			f.get(i).set_Tpos(p);
-			f.get(i).set_onmove(true);
-			System.out.println(f.get(i).get_TPos().getX()+" "+f.get(i).get_TPos().getY());
-			System.out.println(f.get(i).get_onmove());
-		}
-		Window._panel.repaint();
-	}
-	
-	public static void stopPigeon() {
-		ArrayList<Pigeon> f = Window._pCoop.getPigeons();
-		for(int i=0; i<f.size();i++)
-		{
-			f.get(i).set_position("arret");
-			f.get(i).set_onmove(false);
-		}
+		_panel.repaint();
 	}
 
 	@Override
@@ -111,11 +92,4 @@ public class Window extends JFrame implements MouseListener , IElements{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public DrawState getDrawState() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

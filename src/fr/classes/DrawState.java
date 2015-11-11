@@ -1,20 +1,26 @@
 package fr.classes;
 
+import java.util.ArrayList;
+
 import fr.interfaces.IObjectsToDraw;
 
-public class DrawState implements IObjectsToDraw{
-
+public class DrawState {
 	
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	private ArrayList<IObjectsToDraw> _objects;
 
-	@Override
-	public Pos getPos() {
-		// TODO Auto-generated method stub
-		return null;
+	public DrawState() {
+		_objects = new ArrayList<IObjectsToDraw>();
 	}
-
+	
+	public void addElement(IObjectsToDraw o) {
+		_objects.add(o);
+	}
+	
+	public IObjectsToDraw getAtPos(int x) {
+		return _objects.get(x);
+	}
+	
+	public int getSize() {
+		return _objects.size();
+	}
 }

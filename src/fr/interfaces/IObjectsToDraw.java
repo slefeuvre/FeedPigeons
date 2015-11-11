@@ -4,8 +4,11 @@ import fr.classes.*;
 
 public interface IObjectsToDraw {
 	
-	public String getName();
+	public String getClassName();
 	
 	public Pos getPos();
-
+	
+	public Boolean getEtat();
+	
+	public String getPosition();
 }

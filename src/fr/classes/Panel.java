@@ -44,7 +44,7 @@ public class Panel extends JPanel {
 		super.paintComponent(g);
 		if(Window._init)
 		{
-			ArrayList<Food> f = Window._fGenerator.getFood();
+			/*ArrayList<Food> f = Window._fGenerator.getFood();
 			ArrayList<Pigeon> p = Window._pCoop.getPigeons();
 			
 			for(int i=0; i<f.size();i++)
@@ -73,6 +73,35 @@ public class Panel extends JPanel {
 					else
 					{
 						g.drawImage(imagePigeonGauche,p.get(i).getPos().getX(), p.get(i).getPos().getY(), 40, 40, this);
+					}
+				}
+			}*/
+			
+			for(int i = 0; i < Window._d.getSize(); i++) {
+				if(Window._d.getAtPos(i).getClassName() == "food") {
+					if(Window._d.getAtPos(i).getEtat()) {
+						g.drawImage(imagefood,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+					}
+					else
+					{
+						g.drawImage(imagefood2,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+					}
+				}
+				else if(Window._d.getAtPos(i).getClassName() == "pigeon"){
+					if(Window._d.getAtPos(i).getPosition().equals("arret"))
+					{
+						g.drawImage(imagePigeon1,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 30, 30, this);
+					}
+					else
+					{
+						if(Window._d.getAtPos(i).getPosition().equals("droite"))
+						{
+							g.drawImage(imagePigeonDroite,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+						}
+						else
+						{
+							g.drawImage(imagePigeonGauche,Window._d.getAtPos(i).getPos().getX(), Window._d.getAtPos(i).getPos().getY(), 40, 40, this);
+						}
 					}
 				}
 			}
