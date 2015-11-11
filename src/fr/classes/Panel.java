@@ -40,11 +40,11 @@ public class Panel extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {	
-		//dans cette méthode on récupère tous ce qu'il y a a afficher
+		//dans cette mï¿½thode on rï¿½cupï¿½re tous ce qu'il y a a afficher
 
 		super.paintComponent(g);
-		if(Window._init)
-		{
+		//if(Window._init)
+		//{
 			for(int i = 0; i < Window._d.getSize(); i++) {
 				if(Window._d.getAtPos(i).getClassName() == "food") {
 					if(!Window._d.getAtPos(i).getEaten()) {
@@ -80,6 +80,6 @@ public class Panel extends JPanel {
 					}
 				}
 			}
-		}
+		//}
 	}
 }

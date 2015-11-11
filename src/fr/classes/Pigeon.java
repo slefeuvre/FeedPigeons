@@ -41,8 +41,6 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 
 	public void move()
 	{
-		System.out.println("move");
-		System.out.println(_toEat.getEaten());
 		if(_toEat.getEaten()){
 			_toEat = null;
 			_targetPos = null;
@@ -58,7 +56,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 			else
 			{
 				//On change la position du pigeon
-				// on vérifie sur l'axe x
+				// on vï¿½rifie sur l'axe x
 				if(_actualPos.getX() != _targetPos.getX())
 				{
 					if(_actualPos.getX() < _targetPos.getX())
@@ -72,7 +70,7 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 						this._actualPos.setX(_actualPos.getX()-1);
 					}
 				}
-				// on vérifie sur l'axe y
+				// on vï¿½rifie sur l'axe y
 				if(_actualPos.getY() != _targetPos.getY())
 				{
 					if(_actualPos.getY() < _targetPos.getY())
@@ -149,12 +147,10 @@ public class Pigeon extends Thread implements IObjectsToDraw{
 		{
 			if(this._toExecute.equals("move"))
 			{
-				System.out.println(this._toExecute);
 				this.move();
 			}
 			else if(this._toExecute.equals("random"))
 			{
-				System.out.println(this._toExecute);
 				this.move_randomly();
 			}
 			try {
